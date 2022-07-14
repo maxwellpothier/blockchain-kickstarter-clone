@@ -1,10 +1,11 @@
-import Layout from "../../components/Layout";
+import Layout from "../components/Layout";
 import {Button, Form, Input, Message} from "semantic-ui-react";
 import { useState } from "react";
-import factory from "../../ethereum/factory";
-import web3 from "../../ethereum/web3";
+import factory from "../ethereum/factory";
+import web3 from "../ethereum/web3";
+import {Router} from "../routes";
 
-const New = () => {
+const CreateCampaign = () => {
 	const [minContribution, setMinContribution] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
@@ -20,6 +21,8 @@ const New = () => {
 			await factory.methods.createCampaign(minContribution).send({
 				from: accounts[0],
 			});
+
+			Router.pushRoute("/");
 		} catch (err) {
 			setErrorMessage(err.message);
 		}
@@ -53,4 +56,4 @@ const New = () => {
 	);
 };
 
-export default New;
+export default CreateCampaign;

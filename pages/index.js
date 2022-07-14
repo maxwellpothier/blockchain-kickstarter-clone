@@ -1,5 +1,6 @@
 import React, {useEffect} from "react";
 import {Card, Button} from "semantic-ui-react";
+import {Link} from "../routes";
 import Layout from "../components/Layout";
 import factory from "../ethereum/factory";
 
@@ -7,12 +8,17 @@ const Home = ({campaignList}) => {
 
 	const renderCampaigns = () => {
 		const items = campaignList.map((address) => {
+			const campaignDescription = (
+				<Link route={`/campaigns/${address}`}>
+					<a>View Campaign</a>
+				</Link>
+			);
+
 			return {
 				header: address,
-				description: <a>View Campaign</a>,
+				description: campaignDescription,
 				fluid: true,
-
-			}
+			};
 		});
 
 		return <Card.Group items={items}/>
@@ -21,13 +27,16 @@ const Home = ({campaignList}) => {
 	return (
 		<Layout>
 			<h3>Open Campaigns</h3>
-			<Button
-				content={"Create Campaign"}
-				icon={"add circle"}
-				floated={"right"}
-				href={"/campaigns/new"}
-				primary
-			/>
+			<Link route={"/create-campaign"}>
+				<a>
+					<Button
+						content={"Create Campaign"}
+						icon={"add circle"}
+						floated={"right"}
+						primary
+					/>
+				</a>
+			</Link>
 			{renderCampaigns()}
 		</Layout>
 	);
