@@ -8,4 +8,12 @@ const CampaignShow = () => {
 	);
 };
 
+// export async function getStaticProps() {
+// 	return {
+// 		props: {
+
+// 		}
+// 	};
+// }
+
 export default CampaignShow;
