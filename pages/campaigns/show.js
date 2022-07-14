@@ -1,19 +1,25 @@
+import { Component } from "react";
 import Layout from "../../components/Layout";
+import Campaign from "../../ethereum/campaign";
 
-const CampaignShow = () => {
-	return (
-		<Layout>
-			<h3>Campaign Show</h3>
-		</Layout>
-	);
-};
+class CampaignShow extends Component {
+	static async getInitialProps(props) {
+		// const campaign = Campaign(props.query.address);
+		console.log(props.query.address);
+		// const summary = await campaign.methods.getSummary().call();
 
-// export async function getStaticProps() {
-// 	return {
-// 		props: {
+		// console.log(summary);
+		
+		return {};
+	}
 
-// 		}
-// 	};
-// }
+	render() {
+		return (
+			<Layout>
+				Campaign Show
+			</Layout>
+		);
+	}
+}
 
 export default CampaignShow;
